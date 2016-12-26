@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Game_2048</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="score">分数：</string>
+    <string name="bestscore">最高分：</string>
+    <string name="newgame">重新开始</string>
+    <string name="appinfo">天津大学仁爱学院，作者：韩晴晴</string>
+    <string name="project_name">完成项目:2048小游戏</string>
+    <string name="splash_startgame">进入游戏</string>
+    <string name="project_author">完成作者: 韩晴晴    </string>
+    <string name="project_date">完成时间:2016年12月</string>
+    <string name="dialog_exitgame">退出游戏</string>
+    <string name="dialog_exitmessage">您确定退出游戏？</string>
+    <string name="dialog_ok">退出游戏</string>
+    <string name="dialog_no">留在游戏</string>
+
+</resources>
