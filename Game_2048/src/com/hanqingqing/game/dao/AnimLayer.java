@@ -48,6 +48,7 @@ public class AnimLayer extends FrameLayout {
 
 		TranslateAnimation ta = new TranslateAnimation(0, Config.CARD_WIDTH*(toX-fromX), 0, Config.CARD_WIDTH*(toY-fromY));
 		ta.setDuration(100);
+		ta.setFillAfter(false);
 		ta.setAnimationListener(new Animation.AnimationListener() {
 			
 			@Override

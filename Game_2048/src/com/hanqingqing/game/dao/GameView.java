@@ -289,6 +289,7 @@ public class GameView extends LinearLayout {
 		}
 
 		if (merge) {
+			this.invalidate();
 			addRandomNum();
 			checkComplete();
 		}
