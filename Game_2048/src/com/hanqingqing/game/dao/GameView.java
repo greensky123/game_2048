@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.hanqingqing.game.R;
 import com.hanqingqing.game.activity.MainActivity;
 import com.hanqingqing.game.config.Config;
 
@@ -313,13 +314,25 @@ public class GameView extends LinearLayout {
 			}
 
 		if (complete) {
-			new AlertDialog.Builder(getContext()).setTitle("浣犲ソ").setMessage("娓告垙缁撴潫").setPositiveButton("閲嶆柊寮�濮�", new DialogInterface.OnClickListener() {
+			new AlertDialog.Builder(getContext())
+			.setTitle(getContext().getResources().getString(R.string.dialog_gameover_title))
+			.setMessage(getContext().getResources().getString(R.string.dialog_gameover_message))
+			.setPositiveButton(getContext().getResources().getString(R.string.dialog_gameover_ok), new DialogInterface.OnClickListener() {
 
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					startGame();
 				}
-			}).show();
+			})
+			.setNegativeButton(getContext().getResources().getString(R.string.dialog_gameover_no), new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					dialog.dismiss();
+				}
+			})
+			.show();
 		}
 
 	}
