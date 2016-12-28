@@ -298,42 +298,80 @@ public class GameView extends LinearLayout {
 	private void checkComplete(){
 
 		boolean complete = true;
+		boolean Win = false;
 
 		ALL:
 			for (int y = 0; y < Config.LINES; y++) {
 				for (int x = 0; x < Config.LINES; x++) {
-					if (cardsMap[x][y].getNum()==0||
-							(x>0&&cardsMap[x][y].equals(cardsMap[x-1][y]))||
-							(x<Config.LINES-1&&cardsMap[x][y].equals(cardsMap[x+1][y]))||
-							(y>0&&cardsMap[x][y].equals(cardsMap[x][y-1]))||
-							(y<Config.LINES-1&&cardsMap[x][y].equals(cardsMap[x][y+1]))) {
-
-						complete = false;
-						break ALL;
-					}
+						if (cardsMap[x][y].getNum()==0||
+								(x>0&&cardsMap[x][y].equals(cardsMap[x-1][y]))||
+								(x<Config.LINES-1&&cardsMap[x][y].equals(cardsMap[x+1][y]))||
+								(y>0&&cardsMap[x][y].equals(cardsMap[x][y-1]))||
+								(y<Config.LINES-1&&cardsMap[x][y].equals(cardsMap[x][y+1]))) {
+                           Win = false;
+							complete = false;
+							break ALL;
+						}	
+				
+				
 				}
 			}
 
+	Wina:	
+		for (int y = 0; y < Config.LINES; y++) {
+			for (int x = 0; x < Config.LINES; x++) {
+				if (cardsMap[x][y].getNum() >= 2048) {
+					complete = true;
+					Win = true;
+					break Wina;
+				}
+			}
+			}	
 		if (complete) {
-			new AlertDialog.Builder(getContext())
-			.setTitle(getContext().getResources().getString(R.string.dialog_gameover_title))
-			.setMessage(getContext().getResources().getString(R.string.dialog_gameover_message))
-			.setPositiveButton(getContext().getResources().getString(R.string.dialog_gameover_ok), new DialogInterface.OnClickListener() {
+			if (Win) {//游戏胜利是弹出的对话框
+				new AlertDialog.Builder(getContext())
+				.setTitle(getContext().getResources().getString(R.string.dialog_gamewin_title))
+				.setMessage(getContext().getResources().getString(R.string.dialog_gamewin_message))
+				.setPositiveButton(getContext().getResources().getString(R.string.dialog_gameover_ok), new DialogInterface.OnClickListener() {
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					startGame();
-				}
-			})
-			.setNegativeButton(getContext().getResources().getString(R.string.dialog_gameover_no), new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-					dialog.dismiss();
-				}
-			})
-			.show();
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						startGame();
+						MainActivity.getMainActivity().clearScore();
+					}
+				})
+				.setNegativeButton(getContext().getResources().getString(R.string.dialog_gameover_no), new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+						MainActivity.getMainActivity().finish();
+					}
+				})
+				.show();
+			} else {
+				new AlertDialog.Builder(getContext())//游戏失败是弹出的对话框
+				.setTitle(getContext().getResources().getString(R.string.dialog_gameover_title))
+				.setMessage(getContext().getResources().getString(R.string.dialog_gameover_message))
+				.setPositiveButton(getContext().getResources().getString(R.string.dialog_gameover_ok), new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						startGame();
+					}
+				})
+				.setNegativeButton(getContext().getResources().getString(R.string.dialog_gameover_no), new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+					}
+				})
+				.show();
+			}
+	
 		}
 
 	}

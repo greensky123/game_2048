@@ -18,6 +18,8 @@
     <string name="dialog_no">留在游戏</string>
     <string name="dialog_gameover_title">你好，GameOver!</string>
     <string name="dialog_gameover_message">你太菜了,再试一次？</string>
+     <string name="dialog_gamewin_title">恭喜您，游戏胜利!</string>
+    <string name="dialog_gamewin_message">你是否再开一场？</string>
     <string name="dialog_gameover_ok">重新开始</string>
     <string name="dialog_gameover_no">取消</string>
 </resources>
